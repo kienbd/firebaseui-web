@@ -21,6 +21,7 @@ goog.provide('firebaseui.auth.CredentialHelper');
 goog.provide('firebaseui.auth.callback.signInFailure');
 goog.provide('firebaseui.auth.callback.signInSuccess');
 goog.provide('firebaseui.auth.callback.signInSuccessWithAuthResult');
+goog.provide('firebaseui.auth.callback.yoloSignInSuccess');
 goog.provide('firebaseui.auth.widget.Config');
 
 goog.require('firebaseui.auth.AuthUIError');
@@ -972,6 +973,11 @@ firebaseui.auth.widget.Config.prototype.getSignInSuccessWithAuthResultCallback =
 firebaseui.auth.widget.Config.prototype.getSignInFailureCallback = function() {
   return /** @type {?firebaseui.auth.callback.signInFailure} */ (
       this.getCallbacks_()['signInFailure'] || null);
+};
+
+
+firebaseui.auth.widget.Config.prototype.getGoogleYoloSignInSuccessCallback = function() {
+  return (this.getCallbacks_()['yoloSignInSuccess'] || null);
 };
 
 

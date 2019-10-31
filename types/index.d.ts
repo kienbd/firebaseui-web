@@ -26,6 +26,7 @@ interface Callbacks {
   ): boolean;
   signInFailure?(error: firebaseui.auth.AuthUIError): Promise<void>;
   uiShown?(): void;
+  yoloSignInSuccess?(credential: any): void
 }
 
 interface SignInOption {

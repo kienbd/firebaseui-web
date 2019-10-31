@@ -970,10 +970,15 @@ firebaseui.auth.AuthUI.prototype.showOneTapSignIn = function(handler) {
   // Check if instance is already destroyed.
   this.checkIfDestroyed_();
   try {
+    const config_ = this.getConfig();
     this.googleYolo_.show(
-        this.getConfig().getGoogleYoloConfig(), this.isAutoSignInDisabled())
+        config_.getGoogleYoloConfig(), this.isAutoSignInDisabled())
         .then(function(credential) {
           // Run only when component is available.
+          const cb_ = config_.getGoogleYoloSignInSuccessCallback();
+          if(cb_) {
+            return cb_(credential);
+          }
           if (self.currentComponent_) {
             return handler(self, self.currentComponent_, credential);
           }
